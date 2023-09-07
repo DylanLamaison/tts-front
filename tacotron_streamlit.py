@@ -1,44 +1,63 @@
 import streamlit as st
 import requests
 import os
-# Personnaliser le thème Streamlit
+import json
+from streamlit_lottie import st_lottie
 
+# Customize the Streamlit theme
 st.set_page_config(
     page_title='Text-to-Speech Demo',
     page_icon="🔊",
     layout="wide",
 )
 
-# Titre de l'application
-st.title('Text-to-Speech Demo')
+# Application title
+st.markdown('<p style="font-size: 60px; font-weight: bold;">Text-to-Speech Demo</p>', unsafe_allow_html=True)
 
-# Diviser la mise en page en deux colonnes
+# Split the layout into two columns
 col1, col2 = st.columns(2)
 
-# Zone de texte pour entrer le texte à convertir en discours
+# Text input for entering text to convert to speech
 with col1:
-    text_to_transform = st.text_input('Text to speak', 'sample')
-    get_speech_button = st.button('Get Speech', help='Cliquez pour obtenir la conversion en discours')
-    get_dummy_speech_button = st.button('Get Dummy Speech', help='Cliquez pour obtenir une conversion déja crée en discours')
+    text_to_transform = st.text_input('', 'Text to convert')
+    # Add a custom CSS class to the button to make it larger
+    get_speech_button = st.button('🎤 Get speech', help='Click to get the speech conversion', key="get_speech",  args={'height': 60})
 
-# Instructions
-st.markdown('**Instructions:** Entrez le texte que vous souhaitez convertir en discours dans la zone de texte ci-dessus et cliquez sur le bouton "Get Speech".')
+# Use st.sidebar to create a second page
+with st.sidebar:
 
-# Style CSS personnalisé pour le bouton
-st.markdown(
-    """
-    <style>
-    .stButton>button {
-        background-color: #008CBA;
-        color: white;
-        font-size: 16px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+    # Load JSON content from the file
+    with open("image_json/chatbot.json", "r") as json_file:
+        json_data = json.load(json_file)
 
-# Affichage du résultat audio
+    # Display JSON content in the sidebar
+    st_lottie(json_data)
+
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+    st.markdown('<br>', unsafe_allow_html=True)
+
+    get_dummy_speech_button = st.button('😢 Get dummy speech', help='Click to get a pre-created speech conversion')
+
+
+# Display the audio result
 if get_speech_button:
     params = dict(text_to_transform=text_to_transform)
     tts_api_url = 'https://docker-tacotron2-2tg6hvtuea-ew.a.run.app/predict?text_to_transform='
