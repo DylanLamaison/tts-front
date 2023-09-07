@@ -56,7 +56,6 @@ with st.sidebar:
     st.markdown('<br>', unsafe_allow_html=True)
     st.markdown('<br>', unsafe_allow_html=True)
     st.markdown('<br>', unsafe_allow_html=True)
-    st.markdown('<br>', unsafe_allow_html=True)
 
     get_dummy_speech_button = st.button('😢 Get dummy speech', help='Click to get a pre-created speech conversion')
 
@@ -74,5 +73,5 @@ if get_dummy_speech_button:
     st.audio(dummy_wav_path, format="audio/wav")
 
 if get_speech2_button:
-    dummy_wav_path = os.path.join("wav", 'LJ001-0001.wav')
-    st.audio(dummy_wav_path, format="audio/wav")
+    dummy_wav_path = os.path.join("wav", '1 - bulbizarre.ogg')
+    st.audio(dummy_wav_path, format="audio/ogg")
