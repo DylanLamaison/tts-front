@@ -12,16 +12,20 @@ st.set_page_config(
 )
 
 # Application title
-st.markdown('<p style="font-size: 60px; font-weight: bold;">Text-to-Speech Demo</p>', unsafe_allow_html=True)
+st.markdown('<p style="font-size: 60px; font-weight: bold;">Text to Speech Demo</p>', unsafe_allow_html=True)
 
 # Split the layout into two columns
 col1, col2 = st.columns(2)
 
 # Text input for entering text to convert to speech
 with col1:
-    text_to_transform = st.text_input('', 'Text to convert')
-    # Add a custom CSS class to the button to make it larger
-    get_speech_button = st.button('🎤 Get speech', help='Click to get the speech conversion', key="get_speech",  args={'height': 60})
+    text_to_transform = st.text_input('', 'On the shoulders of giants')
+
+    get_speech2_button = st.button('🎤 Get speech', help='Click to get the speech conversion', key="get_speech",  args={'height': 60})
+
+    get_speech_button = st.button('🎤 Get tacotron speech', help='Click to get the speech conversion', key="get_speech2",  args={'height': 60})
+
+
 
 # Use st.sidebar to create a second page
 with st.sidebar:
@@ -67,4 +71,8 @@ if get_speech_button:
 
 if get_dummy_speech_button:
     dummy_wav_path = os.path.join("dummy_wav", 'LJ001-0010.wav')
+    st.audio(dummy_wav_path, format="audio/wav")
+
+if get_speech2_button:
+    dummy_wav_path = os.path.join("wav", 'LJ001-0001.wav')
     st.audio(dummy_wav_path, format="audio/wav")
