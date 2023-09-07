@@ -6,7 +6,7 @@ from streamlit_lottie import st_lottie
 
 # Customize the Streamlit theme
 st.set_page_config(
-    page_title='Text-to-Speech Demo',
+    page_title='Text to Speech Demo',
     page_icon="🔊",
     layout="wide",
 )
